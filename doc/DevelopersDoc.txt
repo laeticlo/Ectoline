@@ -1,0 +1,73 @@
+
+-----------------------------------------------------------------------------
+Warning: This document is intended for developers and system administrators
+-----------------------------------------------------------------------------
+
+  This distribution contains sources and pre-compiled binaries for Linux and
+  MacOSX platforms.
+
+  The binaries are located in PepLine/ports/<portname>/bin
+  
+  where <portname> is one of :
+
+    i386-linux     : linux 32 bits  / compiled on linux RedHat - i386
+    x386-linux     : linux 64 bits  / compiled on linux CentOS - x386
+    i386-darwin    : macosX 32 bits / compiled on MacOSX INTEL (10.4)
+    x386-darwin    : macosX 64 bits / compiled on MacOSX INTEL (10.10)
+
+  To check your port, issue :
+
+    config/guess_port
+    if output is 'unknown <mach>:<sys>:<rel>' then see Annex 1 below
+
+  To [re]compile for one of these ports or your newly added port :
+  
+      cd src; make
+      
+  Note: you need an ANSI C (e.g. gcc) compiler and a GNU compliant make.
+
+  Note: for Windows, the compilation is a bit more tricky (we still need
+        to provide a separate documentation for this port).
+         
+  Note: for MacOSX, to force compilation for another Mac port :
+           make <portname> clean build  (<portname> = ppc-darwin or i386-darwin)
+        e.g. on MacOSX Intel to force compiling for ppc, type :
+           make ppc-darwin clean build
+        There is no target yet for universal (fat) binaries (you
+        should use lipo by hand).
+
+  Once the compilation is finished, you may test the new binaries by issuing :
+  
+     make test
+     
+  At this point you may need to (re)compile PepNovo+ :
+  
+     cd ../thirdparty; make
+
+  Finally, you may run the test suite 
+  
+     cd ../tests; ./runTests
+  
+  (Optionally) after the tests, you may want to cleanup the unnecessary files :
+
+    cd ../src; make clean
+    cd ../thirdparty; make clean
+  
+=============================
+Annex 1
+=============================
+
+To configure and install the software on a *new* port (i.e. a port not listed above)
+
+-a- cd to the 'config' directory
+
+-b- issue './guess_port' to get your port name
+    if the answer is 'unknown xx:yy:zz' then you need to edit the 'guess_port' script
+    to add a new portname (try to keep the same convention : <CPU>-<SYSTEM>)
+  
+-c- if the <portname>.conf file does not exit, then you should create one.
+    the best way is to start from the closest existing .conf file, to copy
+    it and edit it to fit with your system.
+    don't worry too much about cryptic flags, most of them are useless ;-)
+
+-d- copy ./guess_port to ../scripts/LXGuessPort

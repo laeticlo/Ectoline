@@ -1,0 +1,90 @@
+#
+# $Id: $
+#
+# makeprog.targ
+#
+# default make targets to build executable
+#
+# it defines the following targets:
+#
+# all   : init port final  [default-target]
+#         this is the default target
+#         note: init and final are left undefined
+#               there are hooks for user's specific actions
+# port  : bin
+#         install binary in proper port
+#
+# bin   : $(LOCBIN)
+#         compile to binary
+#
+# test  : testrun
+#         run testrun target
+#         note: testrun is left undefined
+#               this is a hook for user's specific test
+#
+# clean : testclean
+#         perform minimal cleanup
+#         note: testclean is left undefined
+#               this is a hook for user's specific cleanup
+#
+# portclean  : clean
+#              port installation cleanup
+#
+
+#
+# default names
+#
+
+ifndef ROOTPRG
+  ROOTPRG = $(notdir $(CURDIR))
+endif
+
+ifndef PRGFIX
+   PRGFIX = $(ROOTPRG)
+endif
+
+PRGSRC   = $(wildcard $(PRGFIX)*.c)
+
+PRGOBJS  = $(PRGSRC:.c=.o)
+
+LDLIBS  := $(USER_LIBS) $(LDLIBS)
+
+#
+# default targets
+#
+
+.PHONY: init all final bin lint test testrun
+.PHONY: clean testclean portclean
+
+all: init port final
+
+bin: $(PRGOBJS)
+	$(CC) $(CFLAGS) -o $(ROOTPRG) $(PRGOBJS) $(LDFLAGS) $(LDLIBS)
+
+port: bin
+	if test ! -d $(PRTDIR) ; then mkdir $(PRTDIR) ; fi
+	if test ! -d $(BINDIR) ; then mkdir $(BINDIR) ; fi
+	cp -f $(ROOTPRG) $(BINDIR)
+
+test: testrun
+	@echo "test of $(ROOTPRG) : OK"
+
+lint:
+	-for f in $(PRGSRC) ; 		                \
+		do echo "------------->> lint $$f";     \
+		$(LINT) $(LINTFLAGS) $$f ;              \
+	done
+
+clean: testclean
+	-rm -f *.o *.s *.bak *.exe $(ROOTPRG)
+
+portclean: clean
+	-rm -f $(BINDIR)/$(ROOTPRG)
+
+
+# help
+
+include $(CFGDIR)helpbase.targ
+
+# tempo
+dev: clean all test

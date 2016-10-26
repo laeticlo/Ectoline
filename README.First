@@ -1,0 +1,104 @@
+------------------------
+EctoLine Version 2.0.0
+------------------------
+
+    EctoLine is composed of :
+
+      - a subset of PepLine (version 2.0.1)
+      - a redistribution of PepNovo+ (version 3.1 beta) as a replacement of Taggor
+      - glue scripts (located in 'scripts') to run Pepline/EctoLine analysis
+
+    Note that the PepNovo+ version redistributed here may not be the latest one.
+    Please consider visiting: https://github.com/jmchilton/pepnovo for a more
+    recent version (but you may need to adapt scripts if the output format has
+    changed).
+
+-1- Distribution
+------------------
+
+  This distribution contains sources and pre-compiled binaries for Linux,
+  and MacOSX platforms.
+
+  The binaries are located in ports/<portname>/bin
+  
+  where <portname> is one of :
+
+    i386-linux     : linux 32 bits  / compiled on linux RedHat - i386
+    x386-linux     : linux 64 bits  / compiled on linux CentOS - x386
+    i386-darwin    : macosX 32 bits / compiled on MacOSX INTEL (10.4)
+    x386-darwin    : macosX 64 bits / compiled on MacOSX INTEL (10.10)
+
+  Therefore on these machines, you don't need to recompile the sources.
+  
+  However, if you want to (re)compile the sources or to compile for
+  a new port, please read :
+  doc/DevelopersDoc.txt
+  
+  then run :
+  cd src; make all           # to recompile PepLine
+  cd thirdparty; make all    # to recompile PepNovo+
+
+-2- Rough tests & Quick start
+------------------
+
+  A rough test suite is provided as : tests/runTests
+  
+  This is a good idea to run it in order to check that
+  everything is installed properly.
+  
+  cd tests; ./runTests
+  
+  Also, in the absence of definite documentation for EctoLine scripts,
+  this script is a good starting point to know how to run the different
+  part of the analysis.
+  
+-3- Documentation
+------------------
+
+  o The original PepLine user's guide (a bit old now) is located in: 
+    doc/PepLineUsersGuide.pdf
+   
+   Note that:
+    -1- the first part of this documentation, concerning Taggor, is not
+        applicable in EctoLine (since Taggor has been replaced by PepNovo+)
+    -2- the data (runtime configuration files) has been moved into scripts/data
+        in EctoLine distribution
+   
+  o PepNovo+ documentation is located in : thirdparty/pepnovo/pepnovo.3.1b
+  
+-4- Sample files
+------------------
+
+   The pkl files located in the "samples/Taggor" directory correspond to the original files
+   used for PepLine evaluation in the publication by Ferro et al.
+
+   allKnownFinal_ME.pkl   :  the "Standard" dataset (203 spectra)
+   132134F_ME.pkl         :  the "Arabidopsis thaliana" dataset (291 spectra)
+   132134FULL_ME.pkl      :  the "Arabidopsis thaliana" dataset including discarded spectra (304 spectra)
+
+   In addition samples are also provided in the 'tests' directory
+   
+-5- Licences
+------------------
+
+  PepLine is distributed under the GPL license *or* under the CECILL license.
+  In other words, you can choose either of those two licenses.
+  The text of both licenses is attached (and should remain attached) to this
+  distribution.
+  
+  Licence file for PepNovo+ is attached in the thirdparty/pepnovo/pepnovo.3.1b
+  directory.
+  
+
+-6- Contact
+------------------
+
+  For any information about Pepline, please send an email to :
+  alain.viari@inria.fr
+  
+  For any information about PepNovo+, please visit:
+  https://github.com/jmchilton/pepnovo
+  
+  For any information about EctoLine, please send email to :
+  laetitia.guillot@univ-rennes1.fr
+

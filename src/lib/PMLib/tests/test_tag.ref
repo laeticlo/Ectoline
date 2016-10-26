@@ -1,0 +1,483 @@
+// ASCII/BIN
+// PMTag
+// id           : LC0689.Tag01
+// seq          : SST
+// mN           : 97.052757
+// mC           : 904.465393
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag02
+// seq          : GLI
+// mN           : 292.105927
+// mC           : 983.516052
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag03
+// seq          : AGS
+// mN           : 170.105515
+// mC           : 2190.053467
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag04
+// seq          : GFG
+// mN           : 1813.878662
+// mC           : 128.094894
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag05
+// seq          : GNS
+// mN           : 266.101501
+// mC           : 808.350403
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag06
+// seq          : LQT
+// mN           : 468.196869
+// mC           : 628.296875
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag07
+// seq          : PSL
+// mN           : 315.106628
+// mC           : 896.507935
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag08
+// seq          : DPI
+// mN           : 260.124542
+// mC           : 782.428650
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag09
+// seq          : ESP
+// mN           : 443.201599
+// mC           : 929.471924
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag10
+// seq          : FVQ
+// mN           : 186.079315
+// mC           : 739.397644
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : allKnownFinal_ME.0.1
+// seq          : SKK
+// mN           : 112.992615
+// mC           : 372.224213
+// mParent      : 847.418396
+// score        : 25.683800
+//
+// PMTag
+// id           : allKnownFinal_ME.0.2
+// seq          : SRS
+// mN           : 112.992615
+// mC           : 385.223511
+// mParent      : 847.418396
+// score        : 18.434500
+//
+// PMTag
+// id           : allKnownFinal_ME.0.3
+// seq          : SRF
+// mN           : 112.992615
+// mC           : 325.185089
+// mParent      : 847.418396
+// score        : 14.684800
+//
+// PMTag
+// id           : allKnownFinal_ME.0.4
+// seq          : KKF
+// mN           : 200.019470
+// mC           : 225.155106
+// mParent      : 847.418396
+// score        : 7.817240
+//
+// PMTag
+// id           : allKnownFinal_ME.0.5
+// seq          : PKK
+// mN           : 103.003601
+// mC           : 372.224213
+// mParent      : 847.418396
+// score        : 3.953490
+//
+// PMTag
+// id           : allKnownFinal_ME.0.6
+// seq          : PRS
+// mN           : 103.003601
+// mC           : 385.223511
+// mParent      : 847.418396
+// score        : 2.827290
+//
+// PMTag
+// id           : allKnownFinal_ME.0.7
+// seq          : SRH
+// mN           : 112.992615
+// mC           : 335.170105
+// mParent      : 847.418396
+// score        : 2.339080
+//
+// PMTag
+// id           : allKnownFinal_ME.0.8
+// seq          : PRF
+// mN           : 103.003601
+// mC           : 325.185089
+// mParent      : 847.418396
+// score        : 2.244770
+//
+// PMTag
+// id           : allKnownFinal_ME.0.9
+// seq          : SAG
+// mN           : 112.992615
+// mC           : 500.322784
+// mParent      : 847.418396
+// score        : 2.175050
+//
+// PMTag
+// id           : allKnownFinal_ME.0.10
+// seq          : KFA
+// mN           : 328.077209
+// mC           : 154.116409
+// mParent      : 847.418396
+// score        : 1.416600
+//
+// ASCII
+// PMTag
+// id           : LC0689.Tag01
+// seq          : SST
+// mN           : 97.052757
+// mC           : 904.465393
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag02
+// seq          : GLI
+// mN           : 292.105927
+// mC           : 983.516052
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag03
+// seq          : AGS
+// mN           : 170.105515
+// mC           : 2190.053467
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag04
+// seq          : GFG
+// mN           : 1813.878662
+// mC           : 128.094894
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag05
+// seq          : GNS
+// mN           : 266.101501
+// mC           : 808.350403
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag06
+// seq          : LQT
+// mN           : 468.196869
+// mC           : 628.296875
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag07
+// seq          : PSL
+// mN           : 315.106628
+// mC           : 896.507935
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag08
+// seq          : DPI
+// mN           : 260.124542
+// mC           : 782.428650
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag09
+// seq          : ESP
+// mN           : 443.201599
+// mC           : 929.471924
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag10
+// seq          : FVQ
+// mN           : 186.079315
+// mC           : 739.397644
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : allKnownFinal_ME.0.1
+// seq          : SKK
+// mN           : 112.992615
+// mC           : 372.224213
+// mParent      : 847.418396
+// score        : 25.683800
+//
+// PMTag
+// id           : allKnownFinal_ME.0.2
+// seq          : SRS
+// mN           : 112.992615
+// mC           : 385.223511
+// mParent      : 847.418396
+// score        : 18.434500
+//
+// PMTag
+// id           : allKnownFinal_ME.0.3
+// seq          : SRF
+// mN           : 112.992615
+// mC           : 325.185089
+// mParent      : 847.418396
+// score        : 14.684800
+//
+// PMTag
+// id           : allKnownFinal_ME.0.4
+// seq          : KKF
+// mN           : 200.019470
+// mC           : 225.155106
+// mParent      : 847.418396
+// score        : 7.817240
+//
+// PMTag
+// id           : allKnownFinal_ME.0.5
+// seq          : PKK
+// mN           : 103.003601
+// mC           : 372.224213
+// mParent      : 847.418396
+// score        : 3.953490
+//
+// PMTag
+// id           : allKnownFinal_ME.0.6
+// seq          : PRS
+// mN           : 103.003601
+// mC           : 385.223511
+// mParent      : 847.418396
+// score        : 2.827290
+//
+// PMTag
+// id           : allKnownFinal_ME.0.7
+// seq          : SRH
+// mN           : 112.992615
+// mC           : 335.170105
+// mParent      : 847.418396
+// score        : 2.339080
+//
+// PMTag
+// id           : allKnownFinal_ME.0.8
+// seq          : PRF
+// mN           : 103.003601
+// mC           : 325.185089
+// mParent      : 847.418396
+// score        : 2.244770
+//
+// PMTag
+// id           : allKnownFinal_ME.0.9
+// seq          : SAG
+// mN           : 112.992615
+// mC           : 500.322784
+// mParent      : 847.418396
+// score        : 2.175050
+//
+// PMTag
+// id           : allKnownFinal_ME.0.10
+// seq          : KFA
+// mN           : 328.077209
+// mC           : 154.116409
+// mParent      : 847.418396
+// score        : 1.416600
+//
+// BINARY
+// PMTag
+// id           : LC0689.Tag01
+// seq          : SST
+// mN           : 97.052757
+// mC           : 904.465393
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag02
+// seq          : GLI
+// mN           : 292.105927
+// mC           : 983.516052
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag03
+// seq          : AGS
+// mN           : 170.105515
+// mC           : 2190.053467
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag04
+// seq          : GFG
+// mN           : 1813.878662
+// mC           : 128.094894
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag05
+// seq          : GNS
+// mN           : 266.101501
+// mC           : 808.350403
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag06
+// seq          : LQT
+// mN           : 468.196869
+// mC           : 628.296875
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag07
+// seq          : PSL
+// mN           : 315.106628
+// mC           : 896.507935
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag08
+// seq          : DPI
+// mN           : 260.124542
+// mC           : 782.428650
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag09
+// seq          : ESP
+// mN           : 443.201599
+// mC           : 929.471924
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : LC0689.Tag10
+// seq          : FVQ
+// mN           : 186.079315
+// mC           : 739.397644
+// mParent      : 200.000000
+// score        : 1.000000
+//
+// PMTag
+// id           : allKnownFinal_ME.0.1
+// seq          : SKK
+// mN           : 112.992615
+// mC           : 372.224213
+// mParent      : 847.418396
+// score        : 25.683800
+//
+// PMTag
+// id           : allKnownFinal_ME.0.2
+// seq          : SRS
+// mN           : 112.992615
+// mC           : 385.223511
+// mParent      : 847.418396
+// score        : 18.434500
+//
+// PMTag
+// id           : allKnownFinal_ME.0.3
+// seq          : SRF
+// mN           : 112.992615
+// mC           : 325.185089
+// mParent      : 847.418396
+// score        : 14.684800
+//
+// PMTag
+// id           : allKnownFinal_ME.0.4
+// seq          : KKF
+// mN           : 200.019470
+// mC           : 225.155106
+// mParent      : 847.418396
+// score        : 7.817240
+//
+// PMTag
+// id           : allKnownFinal_ME.0.5
+// seq          : PKK
+// mN           : 103.003601
+// mC           : 372.224213
+// mParent      : 847.418396
+// score        : 3.953490
+//
+// PMTag
+// id           : allKnownFinal_ME.0.6
+// seq          : PRS
+// mN           : 103.003601
+// mC           : 385.223511
+// mParent      : 847.418396
+// score        : 2.827290
+//
+// PMTag
+// id           : allKnownFinal_ME.0.7
+// seq          : SRH
+// mN           : 112.992615
+// mC           : 335.170105
+// mParent      : 847.418396
+// score        : 2.339080
+//
+// PMTag
+// id           : allKnownFinal_ME.0.8
+// seq          : PRF
+// mN           : 103.003601
+// mC           : 325.185089
+// mParent      : 847.418396
+// score        : 2.244770
+//
+// PMTag
+// id           : allKnownFinal_ME.0.9
+// seq          : SAG
+// mN           : 112.992615
+// mC           : 500.322784
+// mParent      : 847.418396
+// score        : 2.175050
+//
+// PMTag
+// id           : allKnownFinal_ME.0.10
+// seq          : KFA
+// mN           : 328.077209
+// mC           : 154.116409
+// mParent      : 847.418396
+// score        : 1.416600
+//

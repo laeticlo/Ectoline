@@ -1,0 +1,200 @@
+/* -----------------------------------------------------------------------
+ * $Id: Alambix.def 1793 2013-02-24 02:19:06Z viari $
+ * -----------------------------------------------------------------------
+ * @file: Alambix.def
+ * @desc: Alambix include file
+ * 
+ * @history:
+ * @+ <Gloup> : Mar 10 : first version
+ * -----------------------------------------------------------------------
+ * @docstart:
+ *
+ * @docend:
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "LX/LXSys.h"
+#include "LX/LXArray.h"
+#include "LX/LXStkp.h"
+#include "LX/LXBase64.h"
+#include "LX/LXXml.h"
+
+/* -------------------------------------------- */
+/* internal types                               */
+/* -------------------------------------------- */
+
+static String s_free_String(String s) {
+    IFFREE(s);
+    return NULL;
+}
+
+static String s_new_String(const char *src) {
+    return LXStr(src);
+}
+
+static String s_copy_Buffer(char *dst, const char *src, size_t size) {
+  if (src)
+    (void) strncpy(dst, src, size);
+  dst[size] = '\000';
+  return dst;  
+}
+
+/* -------------------------------------------- */
+
+typedef struct {
+    LXXmlElement *elt;
+    void         *ptr;
+    void         (*free)(void *ptr);
+} t_holder;
+
+static t_holder *s_free_t_holder(t_holder *telt) {
+    IFF_RETURN(telt, NULL);
+
+    (void) LXFreeXmlElement(telt->elt);
+    if (telt->free && telt->ptr)
+        telt->free(telt->ptr);
+    FREE(telt);
+    
+    return NULL;
+}
+
+static t_holder *s_new_t_holder(LXXmlElement *elt, void *ptr, void (*ffree)(void *ptr)) {
+    t_holder *telt = NEW(t_holder);
+    IFF_RETURN(telt, NULL);
+
+    telt->elt  = LXCopyXmlElement(elt);
+    telt->ptr  = ptr;
+    telt->free = ffree;
+    
+    return telt;
+}
+
+/* -------------------------------------------- */
+
+static LXStackpPtr s_stack = NULL;
+
+static t_holder *s_push(LXXmlElement *elt, void *ptr, void (*ffree)(void *ptr)) {
+    t_holder *telt = s_new_t_holder(elt, ptr, ffree);
+    IFF_RETURN(telt, NULL);
+    
+    if (! s_stack) s_stack = LXNewStackp(LX_STKP_MIN_SIZE);
+    IFF_RETURN(s_stack, s_free_t_holder(telt));
+    
+    (void) LXPushpIn(s_stack, telt);
+    
+    return telt;
+}
+
+static t_holder *s_pop(void) {
+    IFF_RETURN(s_stack, NULL);
+    t_holder *telt = NULL;
+    
+    (void) LXPoppOut(s_stack, (Ptr *) &telt);
+    
+    return telt;
+}
+
+static t_holder *s_top(void) {
+    IFF_RETURN(s_stack, NULL);
+    return (t_holder *) LXStackpGetTop(s_stack);
+}
+
+/* -------------------------------------------- */
+/* internal accessors                           */
+/* -------------------------------------------- */
+
+#define ACCESSOR(type, fmt)                                         \
+    static int s_##type##_sget (const char *svalue, type *value) {  \
+        return sscanf(svalue, fmt, value); }                        \
+    static type s_##type##_vget (const char *svalue, type dft) {    \
+        type value;                                                 \
+        return (sscanf(svalue, fmt, &value) == 1 ? value : dft); }
+    
+
+ACCESSOR(Int8,  "%hhd")
+ACCESSOR(Int16, "%hd")
+ACCESSOR(Int32, "%d")
+ACCESSOR(Int64, "%lld")
+
+ACCESSOR(UInt8,  "%hhu")
+ACCESSOR(UInt16, "%hu")
+ACCESSOR(UInt32, "%u")
+ACCESSOR(UInt64, "%llu")
+
+ACCESSOR(Float32, "%f")
+ACCESSOR(Float64, "%lf")
+
+static int s_String_sget(const char *svalue, String *value) {
+  *value = s_new_String(svalue);
+  return (svalue ? 1 : 0);
+}
+
+static String s_String_vget(const char *svalue, String dft) {
+  return s_new_String(svalue ? svalue : dft);
+}
+
+#undef ACCESSOR
+
+/* -------------------------------------------- */
+/* internal utilities                           */
+/* -------------------------------------------- */
+
+static const char *s_attr_get(LXXmlElement *elt, const char *name, const char *dft) {
+   IFF_RETURN(elt, dft);
+   int i;
+   for (i = 0 ; i < elt->nattr ; i++) {
+     if (! strcmp(elt->attr[i]->name, name))
+        return elt->attr[i]->value;
+   }
+   return dft;
+}
+
+static char *s_value_get(LXXmlElement *elt, char *dft) {
+  IFF_RETURN(elt, dft);
+  LXArray *buf = LXGetXmlCharBuffer(elt->value);
+  IFF_RETURN(buf, dft);
+  return (char *) buf->data;
+}
+
+/* -------------------------------------------- */
+/* helper macros                                */
+/* -------------------------------------------- */
+
+#define STRCPY_(s)                  \
+    s_new_String(s)
+
+#define SAME_STR_(s1, s2)           \
+    (! strcmp(s1, s2))
+
+#define HAS_CONTEXT_(context)       \
+    (s_top() && s_top()->elt && SAME_STR_(s_top()->elt->name, context))
+
+#define SAME_CONTEXT_(context)      \
+    (SAME_STR_(context, "*") || HAS_CONTEXT_(context))
+
+#define IF_ELT(elt, nam, context)   \
+    if (SAME_STR_(elt->name, nam) && SAME_CONTEXT_(context))
+
+#define VOID_RETURN_(test, message) \
+    if (! test) do {LX_WARNING(message);  return; } while(1)
+
+#define TYPE_(name, type)           \
+    t_ ## type * name
+
+#define NEW_(name, type)            \
+    t_ ## type * name = s_new_t_ ## type (elt)
+    
+#define FREE_(name, type)           \
+    name = s_free_t_ ## type (name)
+
+#define PUSH_(name, type)           \
+    (void) s_push(LXCopyXmlElement(elt), name, v_free_t_ ## type)
+
+#define TOP_(name, type)            \
+    t_ ## type * name = (t_ ## type *) s_top()->ptr
+
+#define POP_()                      \
+    s_free_t_holder(s_pop())

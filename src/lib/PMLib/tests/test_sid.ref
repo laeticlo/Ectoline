@@ -1,0 +1,50 @@
+MY_TEST_SEQUENCE
+comment goes here
+MY_TEST_SEQUENCE@D1@244
+comment goes here
+MY_TEST_SEQUENCE@D2@244
+comment goes here
+MY_TEST_SEQUENCE@D3@244
+comment goes here
+MY_TEST_SEQUENCE@R1@244
+comment goes here
+MY_TEST_SEQUENCE@R2@244
+comment goes here
+MY_TEST_SEQUENCE@R3@244
+comment goes here
+// PMSeqId
+// name      : MY_TEST_SEQUENCE
+// strand    : D
+// frame     : 1
+// length    : 244
+//
+// PMSeqId
+// name      : MY_TEST_SEQUENCE
+// strand    : D
+// frame     : 2
+// length    : 244
+//
+// PMSeqId
+// name      : MY_TEST_SEQUENCE
+// strand    : D
+// frame     : 3
+// length    : 244
+//
+// PMSeqId
+// name      : MY_TEST_SEQUENCE
+// strand    : R
+// frame     : 1
+// length    : 244
+//
+// PMSeqId
+// name      : MY_TEST_SEQUENCE
+// strand    : R
+// frame     : 2
+// length    : 244
+//
+// PMSeqId
+// name      : MY_TEST_SEQUENCE
+// strand    : R
+// frame     : 3
+// length    : 244
+//

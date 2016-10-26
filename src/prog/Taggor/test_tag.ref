@@ -1,0 +1,48 @@
+# Tags generated from test (mass = 1260)
+test 255 729 AEG 1260 0
+test 684 199 TAW 1260 0
+test 255 711 AFG 1260 0
+test 255 612 AFR 1260 0
+test 255 654 AFN 1260 0
+test 326 610 FGT 1260 0
+test 344 610 EGT 1260 0
+test 326 612 FGV 1260 0
+test 326 654 FGG 1260 0
+test 344 612 EGV 1260 0
+%EndOfTags
+# Tags generated from test (mass = 1496)
+test 375 816 KGT 1496 0
+test 432 816 AGT 1496 0
+test 992 242 AGD 1496 0
+test 375 917 GAG 1496 0
+test 260 917 DKG 1496 0
+test 375 816 GKT 1496 0
+test 503 759 GTG 1496 0
+test 260 974 DGA 1496 0
+test 278 917 PKG 1496 0
+test 260 917 DGK 1496 0
+%EndOfTags
+# Tags generated from test (mass = 1558)
+test 1033 215 PPP 1558 0
+test 1033 225 PPS 1558 0
+test 1033 225 PAI 1558 0
+test 1033 166 DKP 1558 0
+test 1033 207 DPS 1558 0
+test 1033 207 PAM 1558 0
+test 1033 176 DKS 1558 0
+test 1033 184 PPK 1558 0
+test 1033 225 PSP 1558 0
+test 1033 207 PSD 1558 0
+%EndOfTags
+# Tags generated from test (mass = 1428)
+test 573 565 VTA 1428 0
+test 472 636 TVT 1428 0
+test 601 565 ATA 1428 0
+test 385 737 STV 1428 0
+test 256 836 EST 1428 0
+test 472 636 EAT 1428 0
+test 672 478 TAS 1428 0
+test 128 937 KES 1428 0
+test 0 1024 KKE 1428 0
+test 385 737 SEA 1428 0
+%EndOfTags

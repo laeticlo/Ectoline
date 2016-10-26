@@ -1,0 +1,15 @@
+#
+# test_hit.in
+# fichier test pour la librairie PMhit
+#
+F 3452 5987 4253 4960 VIARI VIARI 0 0 0 1.000000
+F 6712 9013 7365 8640 ALAINVIARI aLAINvIARI 1 0 2 1.000000
+#
+# ceci est un commentaire
+#
+C -1 5987 5456 5783 <RIGHTPART <rIGHTpART 0 2 0 3.14159
+#
+# ci dessous figure le marqueur de fin de hits 
+# seul le '%' est important
+#
+%End_Of_Hits

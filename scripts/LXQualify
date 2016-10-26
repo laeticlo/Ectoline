@@ -1,0 +1,100 @@
+#!/bin/csh -f
+# $Id: LXQualify 1388 2011-08-23 14:48:18Z viari $
+#
+# qualify clusters according to gff annotations
+#
+# usage: LXQualify [-v] [-h] [-f] cluster_file gff_directory
+# usage: -v : verbose
+# usage: -h : print this help and exit
+# usage: -f : force recompute chromosome translation
+# usage:
+# usage: process all *.gff and *.gff3 files in gff_directory
+#
+
+source `dirname $0`/LXSetup
+
+#
+# get arguments
+#
+
+set fopt = 0
+
+while ($#Argv > 0) 
+  switch ("$Argv[1]")
+    case "-f":
+      set fopt = 1 ; Shift
+      breaksw
+    case "-*":
+      ExitUsage
+      breaksw
+    default:
+      break   # stop parsing arguments
+  endsw
+end
+
+#
+# need 2 remaining arguments
+#
+
+NeedArg 2
+
+set clustfile = $Argv[1]; Shift
+set gffdir = $Argv[1]; Shift
+
+NeedFile $clustfile
+
+NeedDir $gffdir
+
+set featfile = $gffdir.feat
+
+if ((-e $featfile) && (! $fopt)) then
+  Notify "skipping gff extraction ($featfile exists)"
+  goto qualify
+endif
+
+#
+# convert gff files
+# note: we have to use 'find' to avoid 'word too long' error
+#       on some unix systems.
+#
+
+set infiles =  `find $gffdir \( -name \*.gff -or -name \*.gff3 \) -print | wc -l`
+
+if ($infiles == 0) eval Error 6 "$gffdir : directory empty"
+
+Notify "converting $infiles gff files to $featfile"
+
+Debug "execute: see source in $0"
+
+TempoName tmp "tmp"
+
+find $gffdir \( -name \*.gff -or -name \*.gff3 \)    \
+  -exec $AwkCmd -f $ScriptDir/LXGffToTab.awk {} \; > $tmp
+
+CheckAbort 10
+  
+head -1 $tmp > $featfile
+egrep -v '^#' $tmp >> $featfile
+
+TempoClean
+
+#
+# run qualification
+#
+qualify:
+
+set out = $clustfile:r.txt
+
+Notify "qualifying $clustfile to $out"
+
+set cmd = "$AwkCmd -v FEAT=$featfile -f $ScriptDir/LXQualifyCluster.awk $clustfile"
+
+Debug "execute: $cmd"
+
+($cmd > $out) |& awk '/CDS/ {print $0} /CLUSTER/ && (++N%10==0){print "#", N,"clusters"}'
+
+CheckAbort 10
+
+Notify "ok"
+
+Stop

@@ -1,0 +1,30 @@
+# Monoisotopic masses of the 20 commonly
+# occuring amino acid residues
+N       A       Alanine         71.03711
+N       R       Arginine        156.10111
+N       N       Asparagine      114.04293
+N       D       Aspartic_Acid   115.02694
+N       C       Cysteine        103.00919
+N       Q       Glutamine       128.05858
+N       E       Glutamic_Acid   129.04259
+N       G       Glycine         57.02146
+N       H       Histidine       137.05891
+N       I       Isoleucine      113.08406
+N       L       Leucine         113.08406
+N       K       Lysine          128.09496
+N       M       Methionine      131.04049
+N       F       Phenylalanine   147.06841
+N       P       Proline         97.05276
+N       S       Serine          87.03203
+N       T       Threonine       101.04768
+N       W       Thryptophan     186.07931
+N       Y       Tyrosine        163.06333
+N       V       Valine          99.06841
+
+# Pseudo amino acid symbols (needed for PepMap - do not change -)
+P       X       STOP
+P       Z       ERROR
+
+# Modified Amino Acids 
+M       m       Oxyded_Methionine           147.03541 M X 0.01
+M       c       Carboxyamidomethyl_Cysteine 160.03065 C X 0.01

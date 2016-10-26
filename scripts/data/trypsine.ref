@@ -1,0 +1,28 @@
+# --------------------------
+# enzyme cut sites configuration file
+# --------------------------
+#
+# for each enzyme repeat :
+#
+# (line 1)        enzyme_name number_of_sites over_cleavage_probability
+# (line 2 to 2+n) cut_probability cut_offset left_cut_regex right_cut_regex
+#
+
+#
+# --------------------------
+# Trypsin
+#
+# trypsin cut : after K or R if not followed by P
+# --------------------------
+#
+Trypsin 1 0.0
+0.8 1 [K|R]$ ^[^P]
+#
+
+# 
+# --------------------------
+# add other enzyme here
+# --------------------------
+#
+#
+#

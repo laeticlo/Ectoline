@@ -1,0 +1,66 @@
+#!/bin/csh -f
+#
+# quick & dirty test suite for EctoLine
+#
+
+setenv LC_ALL POSIX
+
+echo "# testing portname"
+
+set port = `../scripts/LXGuessPort`
+
+if ($status != 0) then
+    echo 'Result of ../scripts/LXGuessPort is "'$port'"'
+    echo 'This means that portname is not set properly'
+    echo 'Please read doc/DevelopersDoc.txt and fix LXGuessPort accordingly'
+    exit 1  
+endif
+
+echo "# portname: $port  OK"
+
+echo "# testing PepNovo"
+
+../scripts/LXRunPepNovo  selection.mgf
+
+set ref = refs/selection.3.10.tag
+if (-e $ref.$port) set ref = $ref.$port
+diff selection.3.10.tag $ref
+
+if ($status != 0) exit $status
+
+echo "# ok PepNovo"
+
+echo "# testing PepMatch"
+
+../scripts/LXRunPepMatch sctg_small.fst selection.3.10.tag
+
+diff selection.3.10.sctg_small.0.5.hit refs/selection.3.10.sctg_small.0.5.hit
+
+if ($status != 0) exit $status
+
+egrep '^F' selection.3.10.sctg_small.0.5.3.2.5000.clust | sort > test.clust 
+
+diff test.clust refs/selection.3.10.sctg_small.0.5.3.2.5000.clust
+
+if ($status != 0) exit $status
+
+echo "# ok PepMatch"
+
+echo "# testing Qualify"
+
+../scripts/LXQualify selection.3.10.sctg_small.0.5.3.2.5000.clust gff
+
+diff selection.3.10.sctg_small.0.5.3.2.5000.txt refs/selection.3.10.sctg_small.0.5.3.2.5000.txt
+
+if ($status != 0) exit $status
+
+echo "# ok Qualify"
+
+# end
+
+echo "# All tests passed successfully"
+
+\rm *.trans *.raw *.tag *.hit *.clust *.feat selection.*.txt
+
+exit 0
+

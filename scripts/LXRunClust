@@ -1,0 +1,95 @@
+#!/bin/csh -f
+# $Id: $
+#
+# run PMClust on several hit files together
+# see LXRunPepMatch for the normal PMClust procedure
+# this script is used only to gather several hit (and tag) files
+# note: LXRunPepMatch should have been run before
+#
+# usage: LXRunClust [-v] [-h] [-t minhit] [-T minpep] [-d dist] outname hit_file+
+#
+# usage: -v : verbose
+# usage: -h : print this help and exit
+# usage: -D : set mass tolerance used in PMMatch (default 0.5)
+# usage: -t : set min number of hit per cluster (default 3)
+# usage: -T : set min number of peptide per cluster (default 2)
+# usage: -d : set clustering distance (default 5000)
+#
+# usage: outname : basename of output file
+
+source `dirname $0`/LXSetup
+
+#
+# get arguments
+#
+
+set minhit = 3
+set minpep = 2
+set dist = 5000
+
+while ($#Argv > 0) 
+  switch ("$Argv[1]")
+    case "-t":
+      NeedArg 2
+      Shift; set minhit = $Argv[1] ; Shift
+      breaksw
+    case "-T":
+      NeedArg 2
+      Shift; set minpep = $Argv[1] ; Shift
+      breaksw
+    case "-d":
+      NeedArg 2
+      Shift; set dist = $Argv[1] ; Shift
+      breaksw
+    case "-*":
+      ExitUsage
+      breaksw
+    default:
+      break   # stop parsing arguments
+  endsw
+end
+
+#
+# check remaining arguments
+#
+
+NeedArg 2
+
+set outname = $Argv[1]; Shift
+
+# check hit files
+
+foreach file ($Argv)
+  NeedFile $file
+endif
+
+set hitfile = $outname.hit
+
+Notify "gathering $#Argv hit files to : $hitfile"
+
+set cmd = "$AwkCmd -f $ScriptDir/LXCatHit.awk $Argv"
+Debug "execute: $cmd"
+$cmd > $hitfile
+
+CheckAbort 10
+
+#
+# PMClust
+#
+
+set clustfile = $outname.$minhit.$minpep.$dist.clust
+
+set pnArg  = "-t $minhit -T $minpep -d $dist -i $hitfile -o $clustfile"
+
+Notify "clustering hits to : $clustfile"
+
+set cmd = "$BinDir/PMClust $pnArg"
+Debug "execute: $cmd"
+($cmd > $clustfile) >>& /dev/null
+
+CheckAbort 10
+
+Notify "ok"
+
+Stop
+

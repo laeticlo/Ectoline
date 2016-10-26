@@ -1,0 +1,213 @@
+// PMAminoAlphabet
+// AminoAcid
+// name           : Alanine
+// oneLetterCode  : A
+// type           : normal
+// mass           : 71.037109
+//
+// AminoAcid
+// name           : Cysteine
+// oneLetterCode  : C
+// type           : normal
+// mass           : 103.009193
+//
+// AminoAcid
+// name           : Aspartic_Acid
+// oneLetterCode  : D
+// type           : normal
+// mass           : 115.026939
+//
+// AminoAcid
+// name           : Glutamic_Acid
+// oneLetterCode  : E
+// type           : normal
+// mass           : 129.042587
+//
+// AminoAcid
+// name           : Phenylalanine
+// oneLetterCode  : F
+// type           : normal
+// mass           : 147.068405
+//
+// AminoAcid
+// name           : Glycine
+// oneLetterCode  : G
+// type           : normal
+// mass           : 57.021461
+//
+// AminoAcid
+// name           : Histidine
+// oneLetterCode  : H
+// type           : normal
+// mass           : 137.058914
+//
+// AminoAcid
+// name           : Isoleucine
+// oneLetterCode  : I
+// type           : normal
+// mass           : 113.084061
+//
+// AminoAcid
+// name           : Lysine
+// oneLetterCode  : K
+// type           : normal
+// mass           : 128.094955
+//
+// AminoAcid
+// name           : Leucine
+// oneLetterCode  : L
+// type           : normal
+// mass           : 113.084061
+//
+// AminoAcid
+// name           : Methionine
+// oneLetterCode  : M
+// type           : normal
+// mass           : 131.040497
+//
+// AminoAcid
+// name           : Asparagine
+// oneLetterCode  : N
+// type           : normal
+// mass           : 114.042931
+//
+// AminoAcid
+// name           : Proline
+// oneLetterCode  : P
+// type           : normal
+// mass           : 97.052757
+//
+// AminoAcid
+// name           : Glutamine
+// oneLetterCode  : Q
+// type           : normal
+// mass           : 128.058578
+//
+// AminoAcid
+// name           : Arginine
+// oneLetterCode  : R
+// type           : normal
+// mass           : 156.101105
+//
+// AminoAcid
+// name           : Serine
+// oneLetterCode  : S
+// type           : normal
+// mass           : 87.032028
+//
+// AminoAcid
+// name           : Threonine
+// oneLetterCode  : T
+// type           : normal
+// mass           : 101.047684
+//
+// AminoAcid
+// name           : Valine
+// oneLetterCode  : V
+// type           : normal
+// mass           : 99.068413
+//
+// AminoAcid
+// name           : Thryptophan
+// oneLetterCode  : W
+// type           : normal
+// mass           : 186.079315
+//
+// AminoAcid
+// name           : STOP
+// oneLetterCode  : X
+// type           : pseudo
+// mass           : 0.000000
+//
+// AminoAcid
+// name           : Tyrosine
+// oneLetterCode  : Y
+// type           : normal
+// mass           : 163.063324
+//
+// AminoAcid
+// name           : ERROR
+// oneLetterCode  : Z
+// type           : pseudo
+// mass           : 0.000000
+//
+// AminoAcid
+// name           : Acrylamido_Cysteine
+// oneLetterCode  : a
+// type           : modified
+// mass           : 174.046295
+// origin         : 67 (C)
+// modLocation    : 0
+// modProba       : 0.010000
+//
+// AminoAcid
+// name           : Carboxyamidomethyl_Cysteine
+// oneLetterCode  : c
+// type           : modified
+// mass           : 160.030655
+// origin         : 67 (C)
+// modLocation    : 0
+// modProba       : 0.010000
+//
+// AminoAcid
+// name           : Pyroglutamic_Acid
+// oneLetterCode  : e
+// type           : modified
+// mass           : 111.032028
+// origin         : 69 (E)
+// modLocation    : 0
+// modProba       : 0.010000
+//
+// AminoAcid
+// name           : Carbomethyl_Cystein
+// oneLetterCode  : k
+// type           : modified
+// mass           : 161.014664
+// origin         : 67 (C)
+// modLocation    : 0
+// modProba       : 0.010000
+//
+// AminoAcid
+// name           : Oxyded_Methionine
+// oneLetterCode  : m
+// type           : modified
+// mass           : 147.035416
+// origin         : 77 (M)
+// modLocation    : 0
+// modProba       : 0.010000
+//
+complete: ACDEFGHIKLMNPQRSTVWXYZacekm
+normal  : ACDEFGHIKLMNPQRSTVWY
+// AminoAcid
+// name           : Cysteine
+// oneLetterCode  : C
+// type           : normal
+// mass           : 103.009193
+//
+// AminoAcid
+// name           : Acrylamido_Cysteine
+// oneLetterCode  : a
+// type           : modified
+// mass           : 174.046295
+// origin         : 67 (C)
+// modLocation    : 0
+// modProba       : 0.010000
+//
+// AminoAcid
+// name           : Carboxyamidomethyl_Cysteine
+// oneLetterCode  : c
+// type           : modified
+// mass           : 160.030655
+// origin         : 67 (C)
+// modLocation    : 0
+// modProba       : 0.010000
+//
+// AminoAcid
+// name           : Carbomethyl_Cystein
+// oneLetterCode  : k
+// type           : modified
+// mass           : 161.014664
+// origin         : 67 (C)
+// modLocation    : 0
+// modProba       : 0.010000
+//

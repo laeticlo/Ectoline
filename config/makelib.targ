@@ -1,0 +1,96 @@
+#
+# $Id: $
+#
+# makelib.targ
+#
+# default make targets to build libraries
+#
+# it defines the following targets:
+#
+# all   : init port final  [default-target]
+#         this is the default target
+#         note: init and final are left undefined
+#               there are hooks for user's specific actions
+# port  : lib
+#         install library in proper port
+#
+# lib   : $(LIBOBJS)
+#         compile LIBSRC and assemble library
+#
+# test  : $(TESTBIN) testrun
+#         compile all test_*.c files and run testrun target
+#         note: testrun is left undefined
+#               this is a hook for user's specific test
+#
+# clean : testclean
+#         perform minimal cleanup
+#         note: testclean is left undefined
+#               this is a hook for user's specific cleanup
+#
+# portclean  : clean
+#              port installation cleanup
+#
+
+#
+# default names
+#
+
+ifndef ROOTLIB
+  ROOTLIB = $(notdir $(CURDIR))
+endif
+
+# [TODO] AV: next should be ROOTLIB // check in LX please
+ifndef LIBFIX
+   LIBFIX = LX
+endif
+
+LIBSRC   = $(wildcard $(LIBFIX)*.c)
+
+LIBOBJS  = $(LIBSRC:.c=.o)
+
+LOCLIB   = lib$(ROOTLIB).a
+
+TESTBIN += $(basename $(wildcard test_*.c))
+
+LDLIBS  := -l$(ROOTLIB) $(USER_LIBS) $(LDLIBS)
+
+#
+# default targets
+#
+
+.PHONY: init all final lib lint test testrun
+.PHONY: clean testclean portclean
+
+all: init port final
+
+port: lib
+	if test ! -d $(PRTDIR) ; then mkdir $(PRTDIR) ; fi
+	if test ! -d $(LIBDIR) ; then mkdir $(LIBDIR) ; fi
+	cp -f $(LOCLIB) $(LIBDIR)
+	$(RANLIB) $(LIBDIR)/$(LOCLIB)
+
+lib: $(LIBOBJS)
+	$(AR) $(ARFLAGS) $(LOCLIB) $(LIBOBJS)
+	$(RANLIB) $(LOCLIB)
+
+test: $(TESTBIN) testrun
+	@echo "test of $(LOCLIB) : OK"
+
+lint:
+	-for f in $(LIBSRC) ; 		                \
+		do echo "------------->> lint $$f";     \
+		$(LINT) $(LINTFLAGS) $$f ;              \
+	done
+
+clean: testclean
+	-rm -f *.o *.s *.bak *.exe $(LOCLIB) $(TESTBIN)
+
+portclean: clean
+	-rm -f $(LIBDIR)/$(LOCLIB)
+
+# help
+
+include $(CFGDIR)helpbase.targ
+
+# tempo
+dev: clean all test

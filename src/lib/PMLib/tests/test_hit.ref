@@ -1,0 +1,39 @@
+// PMHit
+// type         : 3 (F)
+// posMn        : 3451
+// posMc        : 5986
+// posSn        : 4252
+// posSc        : 4959
+// pepSeq       : VIARI
+// pepMatch     : VIARI
+// nbMis        : 0
+// nbOver       : 0
+// nbMod        : 0
+// score        : 1.000000
+//
+// PMHit
+// type         : 3 (F)
+// posMn        : 6711
+// posMc        : 9012
+// posSn        : 7364
+// posSc        : 8639
+// pepSeq       : ALAINVIARI
+// pepMatch     : aLAINvIARI
+// nbMis        : 1
+// nbOver       : 0
+// nbMod        : 2
+// score        : 1.000000
+//
+// PMHit
+// type         : 2 (C)
+// posMn        : -2
+// posMc        : 5986
+// posSn        : 5455
+// posSc        : 5782
+// pepSeq       : <RIGHTPART
+// pepMatch     : <rIGHTpART
+// nbMis        : 0
+// nbOver       : 2
+// nbMod        : 0
+// score        : 3.141590
+//

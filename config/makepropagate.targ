@@ -1,0 +1,30 @@
+#
+# $Id: $
+#
+# makepropagate.targ
+#
+# default make targets for library containers
+#
+# you should define the 'DIRS' variable
+#
+# It will propagate 'MAKE <target>' to all
+# directories listed in DIRS
+#
+
+#
+# Rules
+#
+
+.PHONY: $(DIRS)
+
+.DEFAULT:
+	$(MAKE) ACTION=$@ _action
+
+all:
+	$(MAKE) ACTION=all _action
+
+_action: $(DIRS)
+	@echo "$(ACTION) done"
+
+$(DIRS):
+	$(MAKE) -C $@ $(ACTION)

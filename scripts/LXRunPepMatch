@@ -1,0 +1,147 @@
+#!/bin/csh -f
+# $Id: LXRunPepMatch 1756 2012-09-02 20:56:41Z viari $
+#
+# run PMTrans, PMMatch and PMClust with default values
+#
+# usage: LXRunPepMatch [-v] [-h] [-f] [-F] [-D tolerance] [-t minhit]
+# usage:               [-T minpep] [-d dist] chromo_fasta tag_file+
+#
+# usage: -v : verbose
+# usage: -h : print this help and exit
+# usage: -f : force recompute chromosome translation
+# usage: -F : force recompute PMMatch
+# usage: -D : set mass tolerance (default 0.5)
+# usage: -t : set min number of hit per cluster (default 3)
+# usage: -T : set min number of peptide per cluster (default 2)
+# usage: -d : set clustering distance (default 5000)
+#
+
+
+source `dirname $0`/LXSetup
+
+#
+# get arguments
+#
+
+set fopt = 0
+set Fopt = 0
+set mtol = 0.5
+set minhit = 3
+set minpep = 2
+set dist = 5000
+
+while ($#Argv > 0) 
+  switch ("$Argv[1]")
+    case "-f":
+      set fopt = 1 ; Shift
+      breaksw
+    case "-F":
+      set Fopt = 1 ; Shift
+      breaksw
+    case "-D":
+      NeedArg 2
+      Shift; set mtol = $Argv[1] ; Shift
+      breaksw
+    case "-t":
+      NeedArg 2
+      Shift; set minhit = $Argv[1] ; Shift
+      breaksw
+    case "-T":
+      NeedArg 2
+      Shift; set minpep = $Argv[1] ; Shift
+      breaksw
+    case "-d":
+      NeedArg 2
+      Shift; set dist = $Argv[1] ; Shift
+      breaksw
+    case "-*":
+      ExitUsage
+      breaksw
+    default:
+      break   # stop parsing arguments
+  endsw
+end
+
+#
+# check remaining arguments
+#
+
+NeedArg 2
+
+set chromofile = $Argv[1]; Shift
+
+# no file error
+
+# more than 1 file : recurse
+
+if ($#Argv > 1) then
+  @ nerr = 0
+  foreach file ($Argv)
+    Exec $0 $Opts -D $mtol -t $minhit -T $minpep -d $dist $chromofile $file
+    OnError @ nerr++
+  end
+  Exit $nerr
+endif
+
+# exactly one file
+
+set tagfile = $Argv[1]; Shift
+
+NeedFile $tagfile
+
+#
+# PMChromo
+#
+
+set transfile = $chromofile:r.trans
+
+if ((-e $transfile) && (! $fopt)) then
+  Notify "skipping chromosome translation ($transfile exists)"
+else
+  Notify "translating chromosome to : $transfile"
+  set cmd = "$BinDir/PMTrans -v -i $chromofile -o $transfile"
+  Debug "execute: $cmd"
+  $cmd |& awk '/read/ && (++N%500==0){print "#",N,"sequences translated"}'
+  CheckAbort 10
+endif
+
+#
+# PMMatch
+#
+
+set chromo = `basename $transfile:r`
+set hitfile = $tagfile:r.$chromo:r.$mtol.hit
+
+set pnCom  = "-a $DataDir/aa_mono.ref -e $DataDir/trypsine.ref"
+set pnArg  = "-n 1 -m 0 -D $mtol -f $transfile -i $tagfile"
+
+if ((-e $hitfile) && (! $Fopt)) then
+  Notify "skipping PMMatch ($hitfile exists)"
+else
+  Notify "matching tags to : $hitfile"
+  set cmd = "$BinDir/PMMatch -v $pnCom $pnArg"
+  Debug "execute: $cmd"
+  ($cmd > $hitfile) |& awk '/processing/ && (++N%500==0){print "#",N,"scans"}'
+  CheckAbort 10
+endif
+
+#
+# PMClust
+#
+
+set clustfile = $hitfile:r.$minhit.$minpep.$dist.clust
+
+set pnArg  = "-t $minhit -T $minpep -d $dist -i $hitfile -o $clustfile"
+
+Notify "clustering hits to : $clustfile"
+
+set cmd = "$BinDir/PMClust $pnArg"
+Debug "execute: $cmd"
+($cmd > $clustfile) >>& /dev/null
+
+CheckAbort 10
+
+Notify "ok"
+
+Stop
+

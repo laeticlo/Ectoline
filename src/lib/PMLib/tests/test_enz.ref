@@ -1,0 +1,6 @@
+// PMEnzyme
+// name      : Trypsine
+// nbCuts    : 1
+// probOver  : 0.000000
+// cut  0   : Offset=1 NCut="[K|R]$" CCut="^[^P]" probCut=0.800000 probMis=0.200000
+//

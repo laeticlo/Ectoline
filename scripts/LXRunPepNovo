@@ -1,0 +1,107 @@
+#!/bin/csh -f
+# $Id: LXRunPepNovo 1379 2011-08-23 13:14:40Z viari $
+#
+# run pepnovotag with default values
+#
+# usage: LXRunPepNovo [-v] [-h] [-t taglen] [-n numsol] mgf_or_pkl_files+
+# usage: -v : verbose
+# usage: -h : print this help and exit
+# usage: -t : set tag length (default 3)
+# usage: -n : set max number of solutions (default 10)
+#
+
+source `dirname $0`/LXSetup
+
+#
+# get arguments
+#
+
+set tlen = 3                # default tag length
+set nmax = 10               # default # tags
+
+while ($#Argv > 0) 
+  switch ("$Argv[1]")
+    case "-t":
+      NeedArg 2
+      Shift; set tlen = $Argv[1] ; Shift
+      breaksw
+    case "-n":
+      NeedArg 2
+      Shift; set nmax = $Argv[1] ; Shift
+      breaksw
+    case "-*":
+      ExitUsage
+      breaksw
+    default:
+      break   # stop parsing arguments
+  endsw
+end
+
+#
+# check remaining arguments
+#
+
+# no file error
+
+NeedArg 1
+
+# more than 1 file : recurse
+
+if ($#Argv > 1) then
+  @ nerr = 0
+  foreach file ($Argv)
+    Exec $0 $Opts -t $tlen -n $nmax $file
+    OnError @ nerr++
+  end
+  Exit $nerr
+endif
+
+# exactly one file
+
+set mgffile = $Argv[1]; Shift
+
+NeedFile $mgffile
+
+#
+# run pepnovo
+# use model default settings for mass tolerance
+#
+
+Notify "running PepNovo"
+
+set pnCom  = "-model_dir $DataDir/Models -model CID_IT_TRYP -num_solutions 100"
+set pnPtm  =  "-PTMs C+57:M+16" 
+set pnLen  = "-tag_length $tlen"
+
+#set raw = $mgffile:r.$tlen.raw
+#set output = $mgffile:r.$tlen.$nmax.tag
+set raw = $mgffile.$tlen.raw
+set output = $mgffile.$tlen.$nmax.tag
+
+set cmd = "$BinDir/PepNovo_bin -file $mgffile $pnCom $pnPtm $pnLen"
+
+Debug "execute: $cmd"
+
+$cmd | tee $raw | awk '/^>>/ {print "#",$0}' 
+
+CheckAbort 10
+
+Notify "raw output in $raw"
+
+#
+# reformat tags
+#
+
+Notify "formatting tags to: $output"
+
+set cmd = "$AwkCmd -v NMAX=$nmax -v FILTER='NC' -f $ScriptDir/LXPepNovo2Taggor.awk $raw"
+
+Debug "execute: $cmd"
+
+$cmd > $output
+
+CheckAbort 10
+
+Notify "ok"
+
+Stop

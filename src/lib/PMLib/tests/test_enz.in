@@ -1,0 +1,28 @@
+# --------------------------
+# fichier de type "enzyme"
+# --------------------------
+#
+# pour chaque enzyme repeter :
+#
+# (ligne 1)       nom_enzyme nbre_de_sites proba_over
+# (ligne 2 a 2+n) proba_cut cutOffset left_cut_regex right_cut
+#
+
+#
+# --------------------------
+# Trypsine
+#
+# coupure trypsine : juste apres K ou R s'ils ne sont pas suivi de P
+# --------------------------
+#
+Trypsine 1 0.0
+0.8 1 [K|R]$ ^[^P]
+#
+
+# 
+# --------------------------
+# add other enzyme here
+# --------------------------
+#
+#
+#

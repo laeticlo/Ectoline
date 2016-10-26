@@ -1,0 +1,65 @@
+------------------------
+PepLine Version 2.0.1
+------------------------
+
+-1- Distribution
+------------------
+
+  This distribution contains sources and pre-compiled binaries for Linux,
+  and MacOSX platforms.
+
+  The binaries are located in PepLine/ports/<portname>/bin
+  
+  where <portname> is one of :
+
+    i386-linux     : linux 32 bits  / compiled on linux RedHat - i386
+    x386-linux     : linux 64 bits  / compiled on linux CentOS - x386
+    i386-darwin    : macosX 32 bits / compiled on MacOSX INTEL (10.4)
+    x386-darwin    : macosX 64 bits / compiled on MacOSX INTEL (10.10)
+
+  Therefore on these machines, you don't need to recompile the sources.
+  If you want to (re)compile the sources, please read the doc/DevelopersDoc.txt
+  file.
+
+  In order to run the pipeline, you need the binaries (in PepLine/ports/<portname>/bin)
+  and the two runtime configuration files : aa_mono.ref and trypsine.ref located in
+  PepLine/data
+  
+
+-2- Documentation
+------------------
+
+   The pepLine user's guide is in PepLine/doc, in two formats :
+   
+   pdf file : PepLineUsersGuide.pdf
+   MSWord doc file : PepLineUsersGuide.doc
+
+-3- Sample files
+------------------
+
+   The pkl files located in the "samples/Taggor" directory correspond to the original files
+   used for PepLine evaluation in the publication by Ferro et al. 
+   ("PepLine : a software pipeline for high-throughput direct mapping of tandem mass
+   spectrometry data on genomic sequences")
+
+   allKnownFinal_ME.pkl   :  the "Standard" dataset (203 spectra)
+   132134F_ME.pkl         :  the "Arabidopsis thaliana" dataset (291 spectra)
+   132134FULL_ME.pkl      :  the "Arabidopsis thaliana" dataset including discarded spectra (304 spectra)
+   
+   there is a 'doTest.csh' script that runs a Taggor test
+
+-4- Licence
+------------------
+
+  This software is distributed under the GPL license *or* under the CECILL license.
+  In other words, you can choose either of those two licenses.
+  The text of both licenses is attached (and should remain attached) to this
+  distribution.
+  
+
+-5- Contact
+------------------
+
+  For any information about Pepline, please send an email to :
+  Alain.Viari@inria.fr
+  

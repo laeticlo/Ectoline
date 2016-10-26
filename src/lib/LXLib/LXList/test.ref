@@ -1,0 +1,15 @@
+N = 100000 root=
+N = 100001 root=
+N = 100002 root=
+N = 100002 copy=
+N = 0 copy=
+N = 1 found=
+N = 50002 find=
+N = 100002 root=
+N = 100000 root=
+N = 50000 root=
+N = 50000 root=
+free ok
+N = 50000 root=
+sort ok
+N = 0 root=

@@ -1,0 +1,31 @@
+
+$Id: README 1788 2013-02-23 00:23:53Z viari $
+
+This directory contains Makefile machine specific configuration
+
+These headers should be used with GNU-make (gmake)
+or compatible
+
+auto.conf : the main configuration file :
+             - determine the machine port thru guess_port shell
+             - include 'default.conf' file
+             - include the machine specific '<port>.conf' file
+
+default.conf : default configuration (included by 'auto.conf')
+
+<port>.conf  : machine specific configuration (included by 'auto.conf')
+
+makelib.targ : target for making libraries (included by libraries makefiles)
+
+To check your port, issue :
+
+  ./guess_port
+  
+  if output is 'unknown <mach>:<sys>:<rel>' then you should :
+    - add a port entry in guess_port for <mach>:<sys>:<rel>
+    - create a <port>.conf configuration file
+      (the best is to start from another port file,
+       choose whatever looks closest)
+
+
+       

@@ -1,0 +1,3 @@
+#clusno contig strand from to totspec typspec tothit hitin hitcross hitout totpep totprot prot totclus protcds cdsin cdscross status
+1 sctg_327 D 106930 107470 2 2 11 11 0 0 2 1 Esi0327_0021 1 12 2 0 ANNOTATED_POSSIBLE_OK
+2 sctg_91 R 275571 275921 2 2 8 0 0 8 2 0 NONE 0 0 0 0 UNANNOTATED_POSSIBLE_CHECK

@@ -1,0 +1,5 @@
+-> i=-123456 f=1.2345 c=123456 s=6543210
+<- i=-123456 f=1.2345 c=123456 s=6543210
+access test_bin.c : 0
+access test_bin.out : 0
+access test_bin.nothere : 12

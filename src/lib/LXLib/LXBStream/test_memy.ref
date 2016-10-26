@@ -1,0 +1,14 @@
+-- blick->block -- 
+i32 -12345678
+i16 123 234
+flt -1.234
+ch  a b c d
+dbl -1.234
+-- -- 
+-- block->blick -- 
+i32 -12345678
+i16 123 234
+flt -1.234
+ch  a b c d
+dbl -1.234
+-- -- 
