@@ -93,7 +93,7 @@ NeedFile $tagfile
 # PMChromo
 #
 
-set transfile = $chromofile:r.trans
+set transfile = $chromofile.trans
 
 if ((-e $transfile) && (! $fopt)) then
   Notify "skipping chromosome translation ($transfile exists)"
@@ -109,8 +109,8 @@ endif
 # PMMatch
 #
 
-set chromo = `basename $transfile:r`
-set hitfile = $tagfile:r.$chromo:r.$mtol.hit
+set chromo = `basename $transfile`
+set hitfile = $tagfile.$chromo.$mtol.hit
 
 set pnCom  = "-a $DataDir/aa_mono.ref -e $DataDir/trypsine.ref"
 set pnArg  = "-n 1 -m 0 -D $mtol -f $transfile -i $tagfile"
@@ -129,7 +129,7 @@ endif
 # PMClust
 #
 
-set clustfile = $hitfile:r.$minhit.$minpep.$dist.clust
+set clustfile = $hitfile.$minhit.$minpep.$dist.clust
 
 set pnArg  = "-t $minhit -T $minpep -d $dist -i $hitfile -o $clustfile"
 
