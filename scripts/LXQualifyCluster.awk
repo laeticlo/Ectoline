@@ -188,11 +188,9 @@ BEGIN {
     PROT_KEY[key] = prot
   }
   close(FEAT)
-  
-  print "# Nb CDS read : " NBEXON >> "/dev/stderr"
+  print "# Nb CDS read : " NBEXON >> "/dev/stderr" 
   mycopy(FROM_EXON, SORT_FROM)
   mysort(SORT_FROM, NBEXON)
-  
   printf("#clusno contig strand from to totspec typspec tothit hitin hitcross ")
   printf("hitout totpep totprot prot totclus protcds cdsin cdscross status")
   print ""

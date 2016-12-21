@@ -83,7 +83,7 @@ TempoClean
 #
 qualify:
 
-set out = $clustfile.qualif.txt
+set out = $clustfile:r.txt
 
 Notify "qualifying $clustfile to $out"
 

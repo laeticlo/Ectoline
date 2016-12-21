@@ -98,7 +98,7 @@ set cmd = "$AwkCmd -v NMAX=$nmax -v FILTER='NC' -f $ScriptDir/LXPepNovo2Taggor.a
 
 Debug "execute: $cmd"
 
-$cmd > $output
+$cmd | tee $output | awk '{print$0}'
 
 CheckAbort 10
 
