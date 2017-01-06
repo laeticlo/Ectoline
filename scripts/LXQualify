@@ -83,8 +83,8 @@ TempoClean
 #
 qualify:
 
-set out = $clustfile:r.txt
-
+set out = $clustfile.txt
+#set out = $clustfile:r.txt
 Notify "qualifying $clustfile to $out"
 
 set cmd = "$AwkCmd -v FEAT=$featfile -f $ScriptDir/LXQualifyCluster.awk $clustfile"
