@@ -1,0 +1,57 @@
+#!/bin/csh -f
+# $Id:$
+#
+# convert LXClust output to gff3 for visualisation
+#
+# usage: LXClust2Gff [-v] [-h] gff_directory output_directory cluster_file+
+# usage: -v : verbose
+# usage: -h : print this help and exit
+# usage:
+# usage: process all cluster_files, combine with gff in gff_directory
+# usage:   and produce new gff files in output_directory
+#
+
+source `dirname $0`/LXSetup
+
+#
+# need at least 2 remaining arguments
+#
+
+NeedArg 3
+
+set gffdir = $Argv[1]; Shift
+set outdir = $Argv[1]; Shift
+
+NeedDir $gffdir
+
+#
+# cleanup output directory
+# and copy gff files
+#
+
+if (-d $outdir) \rm -r $outdir
+
+Notify "creating output directory: $outdir"
+
+mkdir $outdir
+
+foreach f ($gffdir/*.gff*)
+  set ff = `basename $f:r`
+  egrep -v '^###' $f > $outdir/$ff.gff
+end
+
+#
+# add hits and clusters from clust files
+#
+
+foreach f ($Argv)
+  Notify "processing cluster file: $f"
+  $AwkCmd -f $ScriptDir/LXClust2Gff.awk -v REDIR=$outdir $f
+end
+
+Notify "ok"
+
+Stop
+
+
+
