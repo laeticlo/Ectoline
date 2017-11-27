@@ -20,7 +20,7 @@ source `dirname $0`/LXSetup
 NeedArg 3
 
 set gffdir = $Argv[1]; Shift
-set outdir = $Argv[1]; Shift
+set outdir = $Argv[2]; Shift
 
 NeedDir $gffdir
 

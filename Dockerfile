@@ -7,6 +7,7 @@ USER root
 RUN yum -y update && yum clean all
 RUN yum -y install csh
 RUN yum -y install unzip
+RUN yum -y install zip
 # install dos2unix et git
 RUN yum -y install git git-core git-daemon-run
 RUN yum -y install dos2unix
