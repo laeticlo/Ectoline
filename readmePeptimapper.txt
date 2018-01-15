@@ -5,7 +5,7 @@ From the use of MS/MS analysis data, the workflow has to : 1) confirm genes pred
 
 The overall Peptimapper workflow is composed of 4 binaries : LX_RunPepNovo, LXRunPepMatch, LXQualify, ClustToGff.
 
--1-  LX_RunPepNovo : takes spectra file(s) as input (dta,mgf and mzXML files) and provides a PSTs file as output.
+-1-  LXRunPepNovo : takes spectra file(s) as input (dta,mgf and mzXML files) and provides a PSTs file as output.
 
 	run PepNovo_bin with default options : -model CID_IT_TRYP and -PTMs C+57:M+16 and convert output format to be compatible with PMMatch.
 	-------------------
