@@ -3,7 +3,7 @@ Peptimapper Version 1.0
 ------------------------
 From the use of MS/MS analysis data, the workflow has to : 1) confirm genes predictions ; 2) annotate new CDS; 3) correct intron-exon junctions. First, Peptide Sequence Tags (PST) are generated from MS/MS spectra analysis (MGF files) . A PST is defined as a short peptide sequence (3 to 5 amino acids) flanked by two masses corresponding to the two adjacent polypeptides. We align PSTs in the six reading frames. A hit is the location of a PST on the sequence. We clusterize hits according to parameters. Clusters obtained are evaluated and compared with the genes predictions produced by the conventional genome annotation.
 
-The overall Peptimapper workflow is composed of 4 binaries : LX_RunPepNovo, LXRunPepMatch, LXQualify, ClustToGff.
+The overall Peptimapper workflow is composed of 4 binaries from Ectoline project : LX_RunPepNovo, LXRunPepMatch, LXQualify, ClustToGff.
 
 -1-  LXRunPepNovo : takes spectra file(s) as input (dta,mgf and mzXML files) and provides a PSTs file as output.
 
