@@ -12,6 +12,12 @@ EctoLine Version 2.0.0
     Please consider visiting: https://github.com/jmchilton/pepnovo for a more
     recent version (but you may need to adapt scripts if the output format has
     changed).
+        
+    A Docker image of Ectoline (named peptimapper), was created from the dockerfile, and is available from the Docker hub repository : 
+    http://hub.docker.com/r/dockerprotim/peptimapper/
+    and the Docker bioshadock repository : 
+    https://docker-ui.genouest.org/app/#/container/dockerprotim/peptimapper
+    
 
 -1- Distribution
 ------------------
@@ -81,7 +87,7 @@ EctoLine Version 2.0.0
 -5- Licences
 ------------------
 
-  PepLine is distributed under the GPL license *or* under the CECILL license.
+  PepLine and Ectoline are distributed under the GPL license *or* under the CECILL license.
   In other words, you can choose either of those two licenses.
   The text of both licenses is attached (and should remain attached) to this
   distribution.
@@ -99,6 +105,6 @@ EctoLine Version 2.0.0
   For any information about PepNovo+, please visit:
   https://github.com/jmchilton/pepnovo
   
-  For any information about EctoLine, please send email to :
+  For any information about EctoLine or Peptimapper, please send email to :
   laetitia.guillot@univ-rennes1.fr
 
