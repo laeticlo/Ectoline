@@ -13,7 +13,8 @@ EctoLine Version 2.0.0
     recent version (but you may need to adapt scripts if the output format has
     changed).
         
-    A Docker image of Ectoline (named peptimapper), was created from the dockerfile, and is available from the Docker hub repository : 
+    A Docker image of Ectoline (named peptimapper), was created from the dockerfile, 
+    and is available from the Docker hub repository : 
     http://hub.docker.com/r/dockerprotim/peptimapper/
     and the Docker bioshadock repository : 
     https://docker-ui.genouest.org/app/#/container/dockerprotim/peptimapper
